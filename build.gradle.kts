@@ -2,7 +2,7 @@
 
 
 buildscript {
-    val android_gradle_plugin_version by extra("7.2.2")
+
     repositories {
         google()
         mavenCentral()

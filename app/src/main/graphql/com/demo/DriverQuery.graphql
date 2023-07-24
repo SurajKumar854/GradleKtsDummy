@@ -1,0 +1,8 @@
+query DriverQuery {
+    getDriver {
+        name
+        mobile
+        age
+    }
+
+}

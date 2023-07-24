@@ -1,0 +1,63 @@
+type Query{
+    getUsers:[User]
+    getUserByEmail(email:String):User
+
+    getDriver:[Driver]
+    getDriverById(email:String):Driver
+}
+type Mutation{
+    registerDriver(driver:DriverInput):Driver
+    deleteDriverByEmail(email:String):ApiResponse
+
+
+    registerUser(user:UserInput):User
+    deleteUserByEmail(email:String):ApiResponse
+
+
+}
+input DriverInput{
+    name :String!
+    age : Int!
+    mobile :String!
+    email :String!
+    password :String!
+}
+
+type Driver{
+    id :ID
+    name :String
+    age : Int
+    mobile :String
+    email :String
+    password :String
+}
+
+
+
+input UserInput{
+    name :String!
+    age : Int!
+    mobile :String!
+    email :String!
+    password :String!
+}
+
+type User{
+    id :ID
+    name :String
+    age : Int
+    mobile :String
+    email :String
+    password :String
+}
+
+type ApiResponse{
+    status :Boolean
+    message : String
+    error:Int
+}
+
+scalar _Any
+schema {
+    query: Query
+}

@@ -1,20 +1,23 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-
     kotlin("kapt")
-
+    id("com.apollographql.apollo3").version("3.7.3")
 }
-
+apollo {
+    service("service") {
+        packageName.set("com.example.sdl")
+    }
+}
 android {
     namespace = "com.example.sdl"
-    compileSdk =33
+    compileSdk = 33
 
     defaultConfig {
-        applicationId= "com.example.sdl"
-        minSdk= 24
-        targetSdk =33
-        versionCode =1
+        applicationId = "com.example.sdl"
+        minSdk = 24
+        targetSdk = 33
+        versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -26,11 +29,14 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility =JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
@@ -63,14 +69,17 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.4.3")
     debugImplementation("androidx.compose.ui:ui-tooling:1.4.3")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.3")
-    implementation ("androidx.compose.material3:material3:1.1.1")
+    implementation("androidx.compose.material3:material3:1.1.1")
     implementation("com.apollographql.apollo3:apollo-runtime:3.7.3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
-    implementation("com.google.dagger:hilt-android:2.42")
+    implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-android-compiler:2.42")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    //kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
 
 }
